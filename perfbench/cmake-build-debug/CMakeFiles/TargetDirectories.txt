@@ -1,0 +1,3 @@
+/home/zixiong/dram_bench/perfbench/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/zixiong/dram_bench/perfbench/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/zixiong/dram_bench/perfbench/cmake-build-debug/CMakeFiles/perfbench.dir
