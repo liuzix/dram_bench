@@ -5,10 +5,15 @@
 #include <cstdlib>
 #include <vector>
 #include <future>
+#include <unistd.h>
 
 using namespace std;
 
 #define TOTAL_ITERS 10000000
+
+inline void dumpHeap() {
+    syscall(338);
+}
 
 float doOneThread(size_t nIters) {
     default_random_engine generator;
@@ -28,6 +33,8 @@ float doOneThread(size_t nIters) {
             cerr << "Malloc failed with size " << sizeChunk << endl;
             exit(EXIT_FAILURE);
         }
+        auto data = (char*)chunk;
+        *data = 0; // trigger an on-demand paging
         chunks.push_back(chunk);
     }
 
@@ -60,7 +67,7 @@ int main(int argc, char** argv) {
     }
 
     cout << "Average finishing time " << time / (float)nThreads << endl;
-
+    dumpHeap();
 
     return 0;
 }
